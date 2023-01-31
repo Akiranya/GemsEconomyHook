@@ -27,13 +27,14 @@ public class CurrencyRequirement extends TakableRequirement<Pair<String, Double>
 
     @Override protected Pair<String, Double> convert(final Object value, final UUID uuid) {
         String parsed = StringReplacerApplier.replace(String.valueOf(value).trim(), uuid, this);
-        String[] parts = parsed.split("/");
-        String currencyId = parts[0];
-        double amount = Validate.getNumber(parts[1]).map(BigDecimal::doubleValue).orElseGet(() -> {
-            Optional.ofNullable(Bukkit.getPlayer(uuid))
-                .ifPresent(player -> MessageUtils.sendMessage(player, BetterGUI.getInstance().getMessageConfig().invalidNumber.replace("{input}", parsed)));
-            return 0D;
-        });
+        String[] parts = parsed.split("/", 2);
+        String currencyId = parts[1];
+        double amount = Validate.getNumber(parts[0])
+            .map(BigDecimal::doubleValue)
+            .orElseGet(() -> {
+                Optional.ofNullable(Bukkit.getPlayer(uuid)).ifPresent(player -> MessageUtils.sendMessage(player, BetterGUI.getInstance().getMessageConfig().invalidNumber.replace("{input}", parsed)));
+                return 0D;
+            });
         return Pair.of(currencyId, amount);
     }
 
