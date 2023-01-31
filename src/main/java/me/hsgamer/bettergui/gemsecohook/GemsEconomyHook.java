@@ -1,4 +1,4 @@
-package me.hsgamer.bettergui.exampleaddon;
+package me.hsgamer.bettergui.gemsecohook;
 
 import it.unimi.dsi.fastutil.Pair;
 import me.xanium.gemseconomy.GemsEconomy;

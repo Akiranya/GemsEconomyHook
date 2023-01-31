@@ -1,4 +1,4 @@
-package me.hsgamer.bettergui.exampleaddon;
+package me.hsgamer.bettergui.gemsecohook;
 
 import me.hsgamer.bettergui.BetterGUI;
 import me.hsgamer.bettergui.api.action.BaseAction;
