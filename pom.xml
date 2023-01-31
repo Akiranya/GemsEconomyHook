@@ -10,15 +10,16 @@
     <version>2.0</version>
   </parent>
 
-  <artifactId>ExampleAddon</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <artifactId>GemsEconomyHook</artifactId>
+  <version>1.0</version>
   <packaging>jar</packaging>
 
-  <name>ExampleAddon</name>
-  <description>An Example addon for BetterGUI</description>
+  <name>GemsEconomyHook</name>
+  <description>Allows to read/take/give currencies from GemsEconomy</description>
 
   <properties>
-    <project.mainClass>me.hsgamer.bettergui.exampleaddon.ExampleAddon</project.mainClass>
+    <java.version>17</java.version>
+    <project.mainClass>me.hsgamer.bettergui.exampleaddon.Main</project.mainClass>
   </properties>
 
   <repositories>
@@ -26,5 +27,24 @@
       <id>codemc-public</id>
       <url>https://repo.codemc.io/repository/maven-public/</url>
     </repository>
+    <repository>
+      <id>papermc-repo</id>
+      <url>https://papermc.io/repo/repository/maven-public/</url>
+    </repository>
   </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.papermc.paper</groupId>
+      <artifactId>paper-api</artifactId>
+      <version>1.19.3-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>me.xanium.gemseconomy</groupId>
+      <artifactId>GemsEconomy</artifactId>
+      <version>1.3.2</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
 </project>

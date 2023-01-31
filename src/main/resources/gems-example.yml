@@ -1,0 +1,22 @@
+give-point:
+  slot: 1
+  id: emerald
+  name: "&cGive 10 currency of R"
+  command: "give-gems(R): 10"
+
+check-points:
+  slot: 1
+  id: emerald
+  name: "&cTake 10 currency of R"
+  click-requirement:
+    left:
+      take-gems: # Take 10 R
+        point: 10
+        take: true
+    right:
+      check-gems: # Check if the players has 10 R
+        gems:
+          value: 10/R
+          take: false
+        success-action: "tell: &aYou have enough currency of R"
+        fail-action: "tell: &aYou don't have enough currency of R"
