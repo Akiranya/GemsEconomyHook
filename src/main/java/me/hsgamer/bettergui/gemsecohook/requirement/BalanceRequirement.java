@@ -1,9 +1,10 @@
-package me.hsgamer.bettergui.gemsecohook;
+package me.hsgamer.bettergui.gemsecohook.requirement;
 
 import it.unimi.dsi.fastutil.Pair;
 import me.hsgamer.bettergui.BetterGUI;
 import me.hsgamer.bettergui.api.requirement.TakableRequirement;
 import me.hsgamer.bettergui.builder.RequirementBuilder;
+import me.hsgamer.bettergui.gemsecohook.GemsEconomyHook;
 import me.hsgamer.bettergui.util.StringReplacerApplier;
 import me.hsgamer.hscore.bukkit.utils.MessageUtils;
 import me.hsgamer.hscore.common.Validate;
@@ -13,8 +14,8 @@ import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.UUID;
 
-public class CurrencyRequirement extends TakableRequirement<Pair<String, Double>> {
-    protected CurrencyRequirement(final RequirementBuilder.Input input) {
+public class BalanceRequirement extends TakableRequirement<Pair<String, Double>> {
+    public BalanceRequirement(final RequirementBuilder.Input input) {
         super(input);
         getMenu().getVariableManager().register(getName(), (original, uuid) -> {
             Pair<String, Double> test = getFinalValue(uuid);

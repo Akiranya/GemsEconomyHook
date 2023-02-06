@@ -1,8 +1,9 @@
-package me.hsgamer.bettergui.gemsecohook;
+package me.hsgamer.bettergui.gemsecohook.action;
 
 import me.hsgamer.bettergui.BetterGUI;
 import me.hsgamer.bettergui.api.action.BaseAction;
 import me.hsgamer.bettergui.builder.ActionBuilder;
+import me.hsgamer.bettergui.gemsecohook.GemsEconomyHook;
 import me.hsgamer.hscore.common.Validate;
 import me.hsgamer.hscore.task.element.TaskProcess;
 import org.bukkit.Bukkit;

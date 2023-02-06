@@ -22,19 +22,20 @@ public class GemsEconomyHook {
 
     public static double getBalance(UUID uuid, String currencyId) {
         Currency currency = api.getCurrencyManager().getCurrency(currencyId);
-        Account account = api.getAccountManager().getAccount(uuid);
+        Account account = api.getAccountManager().fetchAccount(uuid);
         if (hasNullable(Pair.of(uuid, account), Pair.of(currencyId, currency)))
             return -1;
         return account.getBalance(currency);
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public static boolean hasBalance(UUID uuid, String currencyId, double minimum) {
         return getBalance(uuid, currencyId) >= minimum;
     }
 
     public static boolean takeBalance(UUID uuid, String currencyId, double amount) {
         Currency currency = api.getCurrencyManager().getCurrency(currencyId);
-        Account account = api.getAccountManager().getAccount(uuid);
+        Account account = api.getAccountManager().fetchAccount(uuid);
         if (hasNullable(Pair.of(uuid, account), Pair.of(currencyId, currency)))
             return false;
         account.withdraw(currency, amount);
@@ -43,11 +44,20 @@ public class GemsEconomyHook {
 
     public static boolean giveBalance(UUID uuid, String currencyId, double amount) {
         Currency currency = api.getCurrencyManager().getCurrency(currencyId);
-        Account account = api.getAccountManager().getAccount(uuid);
+        Account account = api.getAccountManager().fetchAccount(uuid);
         if (hasNullable(Pair.of(uuid, account), Pair.of(currencyId, currency)))
             return false;
         account.deposit(currency, amount);
         return true;
+    }
+
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
+    public static boolean hasAccumulatedBalance(UUID uuid, String currencyId, double minimum) {
+        Currency currency = api.getCurrencyManager().getCurrency(currencyId);
+        Account account = api.getAccountManager().fetchAccount(uuid);
+        if (hasNullable(Pair.of(uuid, account), Pair.of(currencyId, currency)))
+            return false;
+        return account.getAccBalance(currencyId) >= minimum;
     }
 
     private static boolean hasNullable(Pair<UUID, Account> account, Pair<String, Currency> currency) {
